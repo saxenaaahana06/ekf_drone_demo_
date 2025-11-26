@@ -1,0 +1,17 @@
+
+/* Simple styling */
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial; margin:0; background:#f7fafc; color:#111;}
+header { background:#0b74d1; color:white; padding:18px; text-align:center;}
+main { max-width:1100px; margin:18px auto; padding:16px; }
+.inputs { background:white; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+.row { display:flex; gap:12px; flex-wrap:wrap; }
+fieldset { border:1px solid #ddd; padding:10px; border-radius:6px; min-width:220px; }
+label { display:block; margin:6px 0; }
+.controls { margin-top:10px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+button { background:#0b74d1; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer;}
+button:hover { opacity:0.95; }
+.output { margin-top:14px; background:white; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+table { border-collapse:collapse; width:320px; }
+td, th { border:1px solid #eee; padding:6px 8px; }
+canvas { border:1px solid #ddd; display:block; margin-top:8px; background:white;}
+footer { text-align:center; padding:10px; color:#666;}

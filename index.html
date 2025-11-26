@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>EKF UAV - Input IMU/GPS/Barometer</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>EKF UAV — Enter IMU / GPS / Barometer Data</h1>
+    <p>Client-side demo: enter sensor readings and run an Extended Kalman Filter to estimate local state.</p>
+  </header>
+
+  <main>
+    <section class="inputs">
+      <h2>Sensor Inputs</h2>
+      <div class="row">
+        <fieldset>
+          <legend>IMU (Accelerometer m/s² / Gyro rad/s)</legend>
+          <label>Ax: <input id="ax" type="number" step="any" value="0"></label>
+          <label>Ay: <input id="ay" type="number" step="any" value="0"></label>
+          <label>Az: <input id="az" type="number" step="any" value="-9.81"></label>
+          <label>Gx: <input id="gx" type="number" step="any" value="0"></label>
+          <label>Gy: <input id="gy" type="number" step="any" value="0"></label>
+          <label>Gz: <input id="gz" type="number" step="any" value="0"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>GPS (local NED coordinates in meters)</legend>
+          <label>GPS X (m): <input id="gpsx" type="number" step="any" value="0"></label>
+          <label>GPS Y (m): <input id="gpsy" type="number" step="any" value="0"></label>
+          <label>GPS Z (m): <input id="gpsz" type="number" step="any" value="0"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Barometer</legend>
+          <label>Altitude (m): <input id="baro" type="number" step="any" value="0"></label>
+        </fieldset>
+      </div>
+
+      <div class="controls">
+        <label>DT (s): <input id="dt" type="number" step="any" value="0.1"></label>
+        <button id="stepBtn">Step (single)</button>
+        <button id="runBtn">Run (10s)</button>
+        <button id="resetBtn">Reset</button>
+        <button id="downloadLogBtn">Download Log (CSV)</button>
+      </div>
+    </section>
+
+    <section class="output">
+      <h2>Estimated State & Error</h2>
+      <table id="stateTable">
+        <thead><tr><th>Variable</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>x (m)</td><td id="sx">0</td></tr>
+          <tr><td>y (m)</td><td id="sy">0</td></tr>
+          <tr><td>z (m)</td><td id="sz">0</td></tr>
+          <tr><td>vx (m/s)</td><td id="svx">0</td></tr>
+          <tr><td>vy (m/s)</td><td id="svy">0</td></tr>
+          <tr><td>vz (m/s)</td><td id="svz">0</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Covariance P (3×3 position block shown)</h3>
+      <pre id="pStr">P (position block) not initialized</pre>
+
+      <h3>Trajectory (2D)</h3>
+      <canvas id="traj" width="700" height="350"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <small>Built as a demo — EKF is simplified for educational purposes.</small>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
